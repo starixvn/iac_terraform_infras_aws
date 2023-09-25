@@ -7,7 +7,7 @@ module "public_bastion_linux" {
   ami           = data.aws_ami.os[each.value.ami].id
   subnet_id              = data.terraform_remote_state.vpc.outputs.public_subnets[0]
   vpc_security_group_ids = [module.public_bastion_linux_sg.security_group_id]
-  associate_public_ip_address = true
+  #associate_public_ip_address = true
   root_block_device = [{
   volume_type = each.value.volume_type
   volume_size = each.value.volume_size

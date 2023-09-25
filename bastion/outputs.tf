@@ -4,3 +4,7 @@ output "public_bastion_sg" {
     public_bastion_windows_sg  = module.public_bastion_windows_sg.security_group_id
   }
 }
+
+output "public_bastion_testing" {
+    value = module.public_bastion_linux
+}

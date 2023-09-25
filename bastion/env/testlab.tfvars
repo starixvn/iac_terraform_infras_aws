@@ -25,8 +25,8 @@ windows_configuration = [
   {
     "application_name" : "vnteam-rdp-server-1",
     "instance_type" : "t3.micro",
-    "ami" : "windows2022",
-    "no_of_instances" : "1",
+    "ami" : "windows2019",
+    "no_of_instances" : "0",
     "volume_type" : "gp3",
     "volume_size" : "30",
   },
