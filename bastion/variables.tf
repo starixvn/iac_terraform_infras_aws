@@ -53,3 +53,10 @@ variable "ami_name" {
     error_message = "Invalid ami name, allowed_values = [amazon suse RHEL ubuntu]."
   }
 }
+variable "INSTANCE_USERNAME" {
+  default = "vndeployer"
+}
+
+variable "INSTANCE_PASSWORD" {
+  default = "1qaz@WSX"
+}
