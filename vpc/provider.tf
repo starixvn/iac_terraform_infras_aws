@@ -14,6 +14,8 @@ terraform {
 provider "aws" {
   region  = var.aws_region
 #  profile = var.aws_profile #for debug testing
+  default_tags {
+    tags = {
       Dept = "VNTeam"
       #Team = "VNTeam"
     }
