@@ -15,10 +15,6 @@ output "proxy_gw_sg" {
   value = module.proxy_gw_sg.security_group_id
 }
 
-output "public_bastion_sg" {
-  value = module.public_bastion_sg.security_group_id
-}
-
 # VPC ID
 output "vpc_id" {
   description = "The ID of the VPC"
