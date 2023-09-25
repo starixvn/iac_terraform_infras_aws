@@ -28,7 +28,11 @@ variable "aws_region_key_remote_state" {
 variable "team" {
   type        = string
 }
-variable "configuration" {
+variable "linux_configuration" {
+  description = "EC2 configuration"
+  default = [{}]
+}
+variable "windows_configuration" {
   description = "EC2 configuration"
   default = [{}]
 }

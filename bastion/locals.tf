@@ -34,21 +34,31 @@ data "aws_ami" "os" {
 }
 
 locals {
-  serverconfig = [
-    for srv in var.configuration : [
+  liniux_serverconfig = [
+    for srv in var.linux_configuration : [
       for i in range(1, srv.no_of_instances+1) : {
         instance_name = "${srv.application_name}" #-${i}
         instance_type = srv.instance_type
         volume_type = srv.volume_type
         volume_size = srv.volume_size
-        # subnet_id   = srv.subnet_id
         ami = srv.ami
-        # security_groups = srv.vpc_security_group_ids
       }
     ]
   ]
+windows_serverconfig = [
+  for srv in var.windows_configuration : [
+    for i in range(1, srv.no_of_instances+1) : {
+      instance_name = "${srv.application_name}" #-${i}
+      instance_type = srv.instance_type
+      volume_type = srv.volume_type
+      volume_size = srv.volume_size
+      ami = srv.ami
+    }
+  ]
+]
 }
 // We need to Flatten it before using it
 locals {
-  instances = flatten(local.serverconfig)
+  linux_instances = flatten(local.liniux_serverconfig)
+  windows_instances = flatten(local.windows_serverconfig)
 }
