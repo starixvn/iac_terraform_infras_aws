@@ -1,0 +1,40 @@
+.bastion:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "bastion/**/*"
+    DIR_PATH: "bastion"
+    TF_COMMAND: "apply"
+
+bastion-validate-syntax:
+  extends: [.bastion, .validate_syntax]
+
+bastion-validate-security:
+  extends: [.bastion, .validate_security]
+
+bastion-validate-security-checkov:
+  extends: [.bastion, .validate_security_checkov]
+
+bastion-build:
+  rules:
+    - if: $RULES_CHANGES_PATH != "bastion/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.bastion, .plan]
+  needs: []
+
+bastion-deploy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "bastion/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.bastion, .apply]
+  needs: ["bastion-build"]
+
+bastion-destroy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "bastion/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.bastion, .destroy]
+  needs: ["bastion-build"]

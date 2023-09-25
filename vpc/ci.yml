@@ -1,0 +1,40 @@
+.vpc:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "vpc/**/*"
+    DIR_PATH: "vpc"
+    TF_COMMAND: "apply"
+
+vpc-validate-syntax:
+  extends: [.vpc, .validate_syntax]
+
+vpc-validate-security:
+  extends: [.vpc, .validate_security]
+
+vpc-validate-security-checkov:
+  extends: [.vpc, .validate_security_checkov]
+
+vpc-build:
+  rules:
+    - if: $RULES_CHANGES_PATH != "vpc/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.vpc, .plan]
+  needs: []
+
+vpc-deploy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "vpc/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.vpc, .apply]
+  needs: ["vpc-build"]
+
+vpc-destroy:
+  rules:
+    - if: $RULES_CHANGES_PATH != "vpc/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.vpc, .destroy]
+  needs: ["vpc-build"]
