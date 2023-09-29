@@ -49,7 +49,7 @@ variable "ami_name" {
   default = "ubuntu22"
 
   validation {
-    condition     = can(regex("amazon|suse|RHEL|ubuntu", var.ami_name))
+    condition     = can(regex("amazon|suse|RHEL|ubuntu|windows", var.ami_name))
     error_message = "Invalid ami name, allowed_values = [amazon suse RHEL ubuntu]."
   }
 }
