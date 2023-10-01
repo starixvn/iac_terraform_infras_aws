@@ -26,15 +26,15 @@ variable "aws_region_key_remote_state" {
 }
 
 variable "team" {
-  type        = string
+  type = string
 }
-variable "linux_configuration" {
+variable "linux_vm" {
   description = "EC2 configuration"
-  default = [{}]
+  default     = [{}]
 }
-variable "windows_configuration" {
+variable "windows_vm" {
   description = "EC2 configuration"
-  default = [{}]
+  default     = [{}]
 }
 
 variable "private_key_location" {
