@@ -1,14 +1,14 @@
 
 module "web_sg" {
-  source  = "gitlab.nexdev.net/iac-terraform/security-group/aws"
-  version = "5.0.0"
-  name = "${var.environment}-${var.project}-private-sg"
+  source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
+  version     = "5.0.0"
+  name        = "${var.environment}-${var.project}-private-sg"
   description = "Security Group with HTTP & SSH port open for entire VPC Block (IPv4 CIDR), egress ports are all world open"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
   # Ingress Rules & CIDR Blocks
-  ingress_rules = ["ssh-tcp", "http-80-tcp", "prometheus-http-tcp","all-icmp","docker-swarm-mngmt-tcp"]
+  ingress_rules       = ["ssh-tcp", "http-80-tcp", "prometheus-http-tcp", "all-icmp", "docker-swarm-mngmt-tcp"]
   ingress_cidr_blocks = [module.vpc.vpc_cidr_block]
-  egress_rules = ["all-all"]
+  egress_rules        = ["all-all"]
   ingress_with_cidr_blocks = [
     {
       from_port   = 9001
@@ -36,24 +36,24 @@ module "web_sg" {
 
 # Security Group for Public Bastion Host
 module "proxy_gw_sg" {
-  source  = "gitlab.nexdev.net/iac-terraform/security-group/aws"
-  version = "5.0.0"
-  name = "${var.environment}-${var.project}-proxy-gw-sg"
+  source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
+  version     = "5.0.0"
+  name        = "${var.environment}-${var.project}-proxy-gw-sg"
   description = "Security Group with SSH port open for everybody (IPv4 CIDR), egress ports are all world open"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
   # Ingress Rules & CIDR Blocks
-  ingress_rules = ["ssh-tcp", "http-80-tcp","http-8080-tcp","all-icmp","https-443-tcp"]
+  ingress_rules       = ["ssh-tcp", "http-80-tcp", "http-8080-tcp", "all-icmp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"] # Required for NLB
-  egress_rules = ["all-all"]
+  egress_rules        = ["all-all"]
 }
 
 module "db_mongo_sg" {
   source  = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version = "5.0.0"
 
-  name = "${var.environment}-${var.project}-sb-mongo-sg"
+  name        = "${var.environment}-${var.project}-sb-mongo-sg"
   description = "Security Group for Mongo DB"
-  vpc_id = module.vpc.vpc_id
+  vpc_id      = module.vpc.vpc_id
   # Ingress Rules & CIDR Blocks
   ingress_cidr_blocks = ["0.0.0.0/0"] # Required for NLB
   ingress_with_cidr_blocks = [
