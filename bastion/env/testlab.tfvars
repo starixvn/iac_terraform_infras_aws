@@ -10,23 +10,21 @@ aws_region_key_remote_state    = "env:/testlab/vpc-terraform.tfstate"
 public_key_location = "key/id_rsa.pub"
 private_key_location = "key/id_rsa"
 
-linux_configuration = [
+linux_vm = [
   {
     "application_name" : "vnteam-ssh-server-1",
     "instance_type" : "t2.micro",
     "ami" : "ubuntu22",
-    "no_of_instances" : "1",
     "volume_type" : "gp3",
     "volume_size" : "20",
   },
 ]
 
-windows_configuration = [
+windows_vm = [
   {
     "application_name" : "vnteam-rdp-server-1",
     "instance_type" : "t3.micro",
     "ami" : "windows2019",
-    "no_of_instances" : "0",
     "volume_type" : "gp3",
     "volume_size" : "30",
   },
