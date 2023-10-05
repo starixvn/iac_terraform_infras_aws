@@ -6,8 +6,7 @@
     TF_COMMAND: "apply"
 
 vpc-code-quality:
-  extends: 
-    - [.vpc, .terraform_lint]
+  extends: [.vpc, .terraform_lint]
 
 vpc-validate-syntax:
   extends: [.vpc, .validate_syntax]
