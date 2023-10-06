@@ -1,3 +1,4 @@
+---
 .vpc:
   extends: .base-rules
   variables:
