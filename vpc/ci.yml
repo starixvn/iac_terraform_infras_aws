@@ -6,25 +6,25 @@
     DIR_PATH: "vpc"
     TF_COMMAND: "apply"
 
-vpc-terraform-lint:
+code-quality-vpc-terraform-lint:
   extends: [.vpc, .terraform_lint]
 
-vpc-terraform-fmt:
+code-quality-vpc-terraform-fmt:
   extends: [.vpc, .terraform_fmt]
 
-vpc-yaml-lint:
+code-quality-vpc-yaml-lint:
   extends: [.vpc, .yaml_lint]
 
-vpc-validate-syntax:
+validate-syntax-vpc:
   extends: [.vpc, .validate_syntax]
 
-vpc-validate-security:
+validate-security-vpc:
   extends: [.vpc, .validate_security]
 
-vpc-validate-security-checkov:
+validate-security-checkov-vpc:
   extends: [.vpc, .validate_security_checkov]
 
-vpc-build:
+build-vpc:
   rules:
     - if: $RULES_CHANGES_PATH != "vpc/**/*"
       when: never
@@ -32,7 +32,7 @@ vpc-build:
   extends: [.vpc, .plan]
   needs: []
 
-vpc-deploy:
+deploy-vpc:
   rules:
     - if: $RULES_CHANGES_PATH != "vpc/**/*"
       when: never
@@ -40,7 +40,7 @@ vpc-deploy:
   extends: [.vpc, .apply]
   needs: ["vpc-build"]
 
-vpc-destroy:
+destroy-vpc:
   rules:
     - if: $RULES_CHANGES_PATH != "vpc/**/*"
       when: never
