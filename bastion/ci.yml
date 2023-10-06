@@ -1,3 +1,4 @@
+---
 .bastion:
   extends: .base-rules
   variables:
