@@ -5,8 +5,14 @@
     DIR_PATH: "vpc"
     TF_COMMAND: "apply"
 
-vpc-code-quality:
+vpc-terraform-lint:
   extends: [.vpc, .terraform_lint]
+
+vpc-terraform-fmt:
+  extends: [.vpc, .terraform_fmt]
+
+vpc-yaml-lint:
+  extends: [.vpc, .yaml_lint]
 
 vpc-validate-syntax:
   extends: [.vpc, .validate_syntax]
