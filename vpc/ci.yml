@@ -38,7 +38,7 @@ deploy-vpc:
       when: never
     - !reference [.base-rules, rules]
   extends: [.vpc, .apply]
-  needs: ["vpc-build"]
+  needs: ["build-vpc"]
 
 destroy-vpc:
   rules:
@@ -47,4 +47,4 @@ destroy-vpc:
     - !reference [.destroy, rules]
     - !reference [.base-rules, rules]
   extends: [.vpc, .destroy]
-  needs: ["vpc-build"]
+  needs: ["build-vpc"]
