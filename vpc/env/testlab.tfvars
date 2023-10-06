@@ -11,3 +11,5 @@ enable_nat_gateway = true
 single_nat_gateway = true
 
 vpc_availability_zones = ["ap-northeast-1a","ap-northeast-1a","ap-northeast-1a","ap-northeast-1a","ap-northeast-1a","ap-northeast-1c"]
+###########
+rudder_num_availability_zones = 2
