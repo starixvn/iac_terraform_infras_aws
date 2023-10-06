@@ -32,6 +32,12 @@ module "web_sg" {
       cidr_blocks = module.vpc.vpc_cidr_block
     },
   ]
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "web_sg"
+    },
+  )
 }
 
 # Security Group for Public Bastion Host
@@ -45,6 +51,12 @@ module "proxy_gw_sg" {
   ingress_rules       = ["ssh-tcp", "http-80-tcp", "http-8080-tcp", "all-icmp", "https-443-tcp"]
   ingress_cidr_blocks = ["0.0.0.0/0"] # Required for NLB
   egress_rules        = ["all-all"]
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "proxy_gw_sg"
+    },
+  )
 }
 
 module "db_mongo_sg" {
@@ -80,4 +92,10 @@ module "db_mongo_sg" {
     },
   ]
   egress_rules = ["all-all"]
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "db_mongo_sg"
+    },
+  )
 }
