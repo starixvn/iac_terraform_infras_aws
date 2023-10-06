@@ -41,6 +41,11 @@ variable "environment" {
   type        = string
 }
 
+variable "team" {
+  description = "Team name"
+  type        = string
+}
+
 variable "enable_nat_gateway" {
   type = string
 }

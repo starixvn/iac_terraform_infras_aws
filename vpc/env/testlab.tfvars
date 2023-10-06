@@ -1,5 +1,6 @@
 project = "clouddemo"
 aws_region = "ap-northeast-1"
+team = "Lumi"
 environment = "testlab"
 aws_profile = "test-iac-terraform-ci"
 ##############VPC

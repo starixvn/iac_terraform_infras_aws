@@ -17,7 +17,13 @@ module "vpc" {
   enable_nat_gateway = var.enable_nat_gateway
   single_nat_gateway = var.single_nat_gateway
 
-  tags = local.common_tags
+  #tags = local.common_tags
+  tags = merge(
+    local.common_tags,
+    {
+     Resource = "VPC"
+    },
+  )
 /*
   tags = {
     "kubernetes.io/cluster/${local.cluster_name}" = "shared"
