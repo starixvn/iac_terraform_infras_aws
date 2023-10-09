@@ -8,31 +8,16 @@ variable "aws_profile" {
   type        = string
 }
 
-variable "private_subnets" {
-  type = list(string)
-}
-
-variable "public_subnets" {
-  type = list(string)
-}
-
 # VPC CIDR Block
 variable "vpc_cidr_block" {
   description = "The IP address range of the VPC in CIDR notation. A prefix of /16 is recommended. Do not use a prefix higher than /27."
   type        = string
-  default     = "10.6.0.0/16"
 }
 
 variable "vpc_cidr_subnetwork_width_delta" {
   description = "The difference between your network and subnetwork netmask; an /16 network and a /20 subnetwork would be 4."
   type        = number
-  default     = 4
-}
-
-# VPC Availability Zones
-variable "vpc_availability_zones" {
-  description = "VPC Availability Zones"
-  type        = list(string)
+  default     = 4 #10.6.32.0/20 10.6.32.1 -> 10.6.47.254  4094
 }
 
 # Environment Variable
@@ -69,3 +54,5 @@ variable "rudder_num_availability_zones" {
   type        = number
   default     = 1
 }
+# for base/network.tf
+# reserve Elastic IP to be used in our NAT gateway

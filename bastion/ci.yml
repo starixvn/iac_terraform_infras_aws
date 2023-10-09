@@ -4,7 +4,6 @@
   variables:
     RULES_CHANGES_PATH: "bastion/**/*"
     DIR_PATH: "bastion"
-    TF_COMMAND: "apply"
 
 bastion-validate-syntax:
   extends: [.bastion, .validate_syntax]
