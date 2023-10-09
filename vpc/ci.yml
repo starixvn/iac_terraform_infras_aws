@@ -4,7 +4,6 @@
   variables:
     RULES_CHANGES_PATH: "vpc/**/*"
     DIR_PATH: "vpc"
-    TF_COMMAND: "apply"
 
 code-quality-vpc-terraform-lint:
   extends: [.vpc, .terraform_lint]

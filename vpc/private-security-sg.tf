@@ -35,7 +35,7 @@ module "web_sg" {
   tags = merge(
     local.common_tags,
     {
-     Resource = "web_sg"
+      Resource = "web_sg"
     },
   )
 }
@@ -54,7 +54,7 @@ module "proxy_gw_sg" {
   tags = merge(
     local.common_tags,
     {
-     Resource = "proxy_gw_sg"
+      Resource = "proxy_gw_sg"
     },
   )
 }
@@ -95,7 +95,7 @@ module "db_mongo_sg" {
   tags = merge(
     local.common_tags,
     {
-     Resource = "db_mongo_sg"
+      Resource = "db_mongo_sg"
     },
   )
 }
