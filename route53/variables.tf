@@ -22,25 +22,13 @@ variable "team" {
 variable "project" {
   type = string
 }
-variable "aws_region_bucket_remote_state" {
-  description = "aws_region_bucket"
-  type        = string
-}
-variable "aws_region_key_remote_state" {
-  description = "aws_region_key"
-  type        = string
-}
-variable "domains" {
-  type = string
-}
-variable "staging_domains" {
-  type = string
-}
-variable "sg_domain_zones" {
+
+variable "domain_zones" {
   description = "domain_zones"
   default     = [{}]
 }
-variable "sg_domain_records" {
+#######ROUTE 53
+variable "domain_records" {
   description = "domain_records"
   default     = [{}]
 }

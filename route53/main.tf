@@ -1,37 +1,14 @@
-module "delegation_sets" {
-  source  = "gitlab.nexdev.net/iac-terraform/aws-route53/aws//modules/delegation-sets"
-  version = "2.10.2"
-
-  delegation_sets = {
-    "luminetsoft_set" = {
-      reference_name = "luminetsoft_set"
-    },
-  }
-  /*
-  delegation_sets = {
-    main = {}
-  }*/
-}
-
 module "zones" {
   source  = "gitlab.nexdev.net/iac-terraform/aws-route53/aws//modules/zones"
   version = "2.10.2"
-
+  for_each = { for domain_zone in local.domain_zone_config : domain_zone.domain => domain_zone }
   zones = {
-    "luminetsoft.com" = {
-      comment = "luminetsoft.com (production)"
+  "${each.value.domain}"= {
+      comment = "${each.value.domain} - ${local.project}-${var.environment}"
       tags = {
-        Name = "luminetsoft.com"
+        Name = "${each.value.domain}"
       }
     },
-    "staging.luminetsoft.com" = {
-      comment = "staging.luminetsoft.com (staging)"
-      #delegation_set_id = module.delegation_sets.route53_delegation_set_id["luminetsoft_set"]
-      delegation_set_name_servers = module.delegation_sets.route53_delegation_set_name_servers["luminetsoft_set"]
-      tags = {
-        Name = "staging.luminetsoft.com"
-      }
-    }
   }
 
   tags = merge(
@@ -40,6 +17,4 @@ module "zones" {
       Resource = "Route53"
     },
   )
-
-  depends_on = [module.delegation_sets]
 }

@@ -15,9 +15,11 @@ module "vpc" {
     cidrsubnet(var.vpc_cidr_block, var.vpc_cidr_subnetwork_width_delta, i)
   ]
 
-  enable_nat_gateway  = var.enable_nat_gateway
-  single_nat_gateway  = var.single_nat_gateway
-  external_nat_ip_ids = [aws_eip.nat_gw_elastic_ip.id]
+  enable_nat_gateway     = var.enable_nat_gateway
+  single_nat_gateway     = var.single_nat_gateway
+  one_nat_gateway_per_az = false
+  reuse_nat_ips          = true
+  external_nat_ip_ids    = [aws_eip.nat_gw_elastic_ip.id]
 
   tags = merge(
     local.common_tags,
