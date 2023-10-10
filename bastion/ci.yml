@@ -5,16 +5,25 @@
     RULES_CHANGES_PATH: "bastion/**/*"
     DIR_PATH: "bastion"
 
-bastion-validate-syntax:
+code-quality-bastion-terraform-lint:
+  extends: [.bastion, .terraform_lint]
+
+code-quality-bastion-terraform-fmt:
+  extends: [.bastion, .terraform_fmt]
+
+code-quality-bastion-yaml-lint:
+  extends: [.bastion, .yaml_lint]
+
+validate-syntax-bastion:
   extends: [.bastion, .validate_syntax]
 
-bastion-validate-security:
+validate-security-bastion:
   extends: [.bastion, .validate_security]
 
-bastion-validate-security-checkov:
+validate-security-checkov-bastion:
   extends: [.bastion, .validate_security_checkov]
 
-bastion-build:
+build-bastion:
   rules:
     - if: $RULES_CHANGES_PATH != "bastion/**/*"
       when: never
@@ -22,19 +31,19 @@ bastion-build:
   extends: [.bastion, .plan]
   needs: []
 
-bastion-deploy:
+deploy-bastion:
   rules:
     - if: $RULES_CHANGES_PATH != "bastion/**/*"
       when: never
     - !reference [.base-rules, rules]
   extends: [.bastion, .apply]
-  needs: ["bastion-build"]
+  needs: ["build-bastion"]
 
-bastion-destroy:
+destroy-bastion:
   rules:
     - if: $RULES_CHANGES_PATH != "bastion/**/*"
       when: never
     - !reference [.destroy, rules]
     - !reference [.base-rules, rules]
   extends: [.bastion, .destroy]
-  needs: ["bastion-build"]
+  needs: ["build-bastion"]
