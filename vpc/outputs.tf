@@ -15,6 +15,10 @@ output "proxy_gw_sg" {
   value = module.proxy_gw_sg.security_group_id
 }
 
+output "loadbalancer_sg" {
+  value = module.loadbalancer_sg.security_group_id
+}
+
 # VPC ID
 output "vpc_id" {
   description = "The ID of the VPC"
