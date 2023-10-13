@@ -7,9 +7,8 @@ module "acme_account_staging" {
 }
 */
 module "acme_certificate_staging" {
-  #source                   = "gitlab.nexdev.net/iac-terraform/acme-certificate/aws//certificate"
-  #version                  = "3.0.3"
-  source                   = "./modules/acme_certificate_staging/certificate"
+  source = "gitlab.nexdev.net/iac-terraform/acme-certificate/aws"
+  version = "1.0.1"
   acme_account_id          = acme_registration.staging_account_registration.id
   acme_account_private_key = acme_registration.staging_account_registration.account_key_pem
   base_domain              = var.base_domain
@@ -18,7 +17,8 @@ module "acme_certificate_staging" {
 }
 
 module "acme_certificate_production" {
-  source                   = "./modules/acme_certificate_staging/certificate"
+  source = "gitlab.nexdev.net/iac-terraform/acme-certificate/aws"
+  version = "1.0.1"
   acme_account_id          = acme_registration.production_account_registration.id
   acme_account_private_key = acme_registration.production_account_registration.account_key_pem
   base_domain              = var.base_domain_main
