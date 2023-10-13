@@ -1,0 +1,49 @@
+---
+.acme-certificate:
+  extends: .base-rules
+  variables:
+    RULES_CHANGES_PATH: "acme-certificate/**/*"
+    DIR_PATH: "acme-certificate"
+
+code-quality-acme-certificate-terraform-lint:
+  extends: [.acme-certificate, .terraform_lint]
+
+code-quality-acme-certificate-terraform-fmt:
+  extends: [.acme-certificate, .terraform_fmt]
+
+code-quality-acme-certificate-yaml-lint:
+  extends: [.acme-certificate, .yaml_lint]
+
+validate-syntax-acme-certificate:
+  extends: [.acme-certificate, .validate_syntax]
+
+validate-security-acme-certificate:
+  extends: [.acme-certificate, .validate_security]
+
+validate-security-checkov-acme-certificate:
+  extends: [.acme-certificate, .validate_security_checkov]
+
+build-acme-certificate:
+  rules:
+    - if: $RULES_CHANGES_PATH != "acme-certificate/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.acme-certificate, .plan]
+  needs: []
+
+deploy-acme-certificate:
+  rules:
+    - if: $RULES_CHANGES_PATH != "acme-certificate/**/*"
+      when: never
+    - !reference [.base-rules, rules]
+  extends: [.acme-certificate, .apply]
+  needs: ["build-acme-certificate"]
+
+destroy-acme-certificate:
+  rules:
+    - if: $RULES_CHANGES_PATH != "acme-certificate/**/*"
+      when: never
+    - !reference [.destroy, rules]
+    - !reference [.base-rules, rules]
+  extends: [.acme-certificate, .destroy]
+  needs: ["build-acme-certificate"]
