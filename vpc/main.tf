@@ -21,6 +21,13 @@ module "vpc" {
   reuse_nat_ips          = true
   external_nat_ip_ids    = [aws_eip.nat_gw_elastic_ip.id]
 
+  public_subnet_tags = {
+    "kubernetes.io/role/elb" = "1"
+  }
+  private_subnet_tags = {
+    "kubernetes.io/role/internal-elb" = "1"
+  }
+
   tags = merge(
     local.common_tags,
     {
