@@ -1,11 +1,3 @@
-/*
-module "acme_account_staging" {
-  source = "gitlab.nexdev.net/iac-terraform/acme-certificate/aws//account"
-  version = "3.0.3"
-  email_address = var.dns_names_staging
-  #acme_alias = "acme.staging"
-}
-*/
 module "acme_certificate_staging" {
   source = "gitlab.nexdev.net/iac-terraform/acme-certificate/aws"
   version = "1.0.1"
