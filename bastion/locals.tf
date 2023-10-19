@@ -4,7 +4,7 @@ locals {
   team        = var.team
   environment = var.environment
   common_tags = {
-    Dept        = "VNTeam"
+    Dept        = "vnTerraform"
     Team        = local.team
     Environment = local.environment
   }
