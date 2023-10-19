@@ -1,4 +1,5 @@
 project = "cloud"
+team = "Lumi"
 aws_region = "ap-east-1"
 environment = "local"
 aws_profile = "local-iac-terraform-ci"
