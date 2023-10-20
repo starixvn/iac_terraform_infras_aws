@@ -9,7 +9,7 @@ resource "aws_acm_certificate" "certificate_staging" {
     },
   )
 }
-
+/*
 resource "aws_acm_certificate" "certificate_production" {
   certificate_body  = module.acme_certificate_production.certificate_pem
   private_key       = module.acme_certificate_production.private_key_pem
@@ -21,3 +21,4 @@ resource "aws_acm_certificate" "certificate_production" {
     },
   )
 }
+*/

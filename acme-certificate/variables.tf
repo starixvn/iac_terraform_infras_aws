@@ -102,15 +102,15 @@ variable "acme_email_staging" {
 
 variable "domain_name" {
   type    = string
-  default = "luminetsoft.com"
+  default = "lumigame.com"
 }
 
 variable "base_domain" {
   type    = string
-  default = "staging.luminetsoft.com"
+  default = "staging.lumigame.com"
 }
 
 variable "base_domain_main" {
   type    = string
-  default = "luminetsoft.com"
+  default = "lumigame.com"
 }

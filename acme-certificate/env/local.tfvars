@@ -9,8 +9,8 @@ aws_region_key_remote_state_zone    = "env:/local/route53-tf.tfstate"
 ############### Route53
 domain_ns_records = [
   {
-    "zone_id" : "luminetsoft.com",
-    "name_servers" : "staging.luminetsoft.com",
+    "zone_id" : "lumigame.com",
+    "name_servers" : "staging.lumigame.com",
     "name" : "staging",
     "type" : "NS",
     "ttl" : "86400",
@@ -18,7 +18,7 @@ domain_ns_records = [
 ]
 
 domain_a_records = {
-  "luminetsoft.com" = [
+  "lumigame.com" = [
     {
           "name" : "*",
           "type" : "A",
@@ -36,7 +36,7 @@ domain_a_records = {
 
 
 domain_alias_records = {
-  "luminetsoft.com" = [
+  "lumigame.com" = [
     {
         "name" : "w1",
         "type" : "A",
@@ -46,7 +46,7 @@ domain_alias_records = {
         "type" : "A",
     },
   ],
-  "staging.luminetsoft.com" = [
+  "staging.lumigame.com" = [
     {
         "name" : "w1",
         "type" : "A",
@@ -61,23 +61,23 @@ domain_alias_records = {
 dns_challenge_staging = {
     provider = "route53"
 
-    config = { AWS_HOSTED_ZONE_ID = "Z046723215C4XPIA96XGT", }
+    config = { AWS_HOSTED_ZONE_ID = "Z10171071BNDOQUNZTQ84", }
   }
 
 dns_challenge_main = {
     provider = "route53"
 
-    config = { AWS_HOSTED_ZONE_ID = "Z05911072RFPKIZBRX9TZ", }
+    config = { AWS_HOSTED_ZONE_ID = "Z10169222Q6V6IPOEWWTI", }
   }
 
 dns_names_staging     = [
-    "staging.luminetsoft.com",
-    "*.staging.luminetsoft.com",
+    "staging.lumigame.com",
+    "*.staging.lumigame.com",
   ]
 
 dns_names_main     = [
-    "luminetsoft.com",
-    "*.luminetsoft.com",
+    "lumigame.com",
+    "*.lumigame.com",
   ]
 acme_email = "troy.vo@starixsoft.com"
 acme_email_staging = "troy.vo@nexcel.vn"

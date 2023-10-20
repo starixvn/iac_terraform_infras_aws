@@ -58,17 +58,6 @@ domain_alias_records = {
   ],
 }
 
-dns_challenge_staging = {
-    provider = "route53"
-
-    config = { AWS_HOSTED_ZONE_ID = "Z046723215C4XPIA96XGT", }
-  }
-
-dns_challenge_main = {
-    provider = "route53"
-
-    config = { AWS_HOSTED_ZONE_ID = "Z05911072RFPKIZBRX9TZ", }
-  }
 
 dns_names_staging     = [
     "staging.luminetsoft.com",
