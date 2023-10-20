@@ -1,9 +1,10 @@
 resource "aws_eip" "nat_gw_elastic_ip" {
+  instance   = module.public_bastion_linux.vnteam-ssh-server-1.id
   tags = merge(
     local.common_tags,
     {
-      Name     = "${var.environment}-${var.project}-nat-eip"
-      Resource = "nat_gw_elastic_ip"
+      Name     = "${var.team}-${var.environment}-nat-eip"
+      Resource = "VPC"
     },
   )
 }
