@@ -4,4 +4,4 @@ aws_region = "ap-east-1"
 environment = "local"
 aws_profile = "local-iac-terraform-ci"
 ##### Route53 ZONE
-domain_zones = ["sb33.site"]
+domain_zones = ["lumigame.com","staging.lumigame.com",]
