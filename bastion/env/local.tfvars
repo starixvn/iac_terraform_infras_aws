@@ -13,7 +13,7 @@ private_key_location = "key/id_rsa"
 linux_vm = [
   {
     "application_name" : "vnteam-ssh-server-1",
-    "instance_type" : "t2.micro",
+    "instance_type" : "t3.micro",
     "ami" : "ubuntu22",
     "volume_type" : "gp3",
     "volume_size" : "20",
