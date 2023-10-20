@@ -3,7 +3,7 @@ resource "aws_eip" "nat_gw_elastic_ip" {
   tags = merge(
     local.common_tags,
     {
-      Name     = "${var.team}-${var.environment}-nat-eip"
+      Name     = lower("${var.team}-${var.environment}-nat-eip")
       Resource = "VPC"
     },
   )

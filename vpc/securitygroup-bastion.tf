@@ -2,7 +2,7 @@
 module "proxy_gw_sg" {
   source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version     = "5.0.0"
-  name        = "${var.environment}-${var.project}-proxy-gw-sg"
+  name        = lower("${var.team}-${var.environment}-proxy-gw-sg")
   description = "Security Group with SSH port open for everybody (IPv4 CIDR), egress ports are all world open"
   vpc_id      = module.vpc.vpc_id
   # Ingress Rules & CIDR Blocks

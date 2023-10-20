@@ -2,7 +2,7 @@
 module "web_sg" {
   source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version     = "5.0.0"
-  name        = "${var.environment}-${var.project}-private-sg"
+  name        = lower("${var.team}-${var.environment}-private-sg")
   description = "Security Group with HTTP & SSH port open for entire VPC Block (IPv4 CIDR), egress ports are all world open"
   vpc_id      = module.vpc.vpc_id
   # Ingress Rules & CIDR Blocks

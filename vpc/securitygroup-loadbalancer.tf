@@ -3,7 +3,7 @@ module "loadbalancer_sg" {
   source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version     = "5.0.0"
 
-  name = "${var.environment}-${var.project}-loadbalancer-sg"
+  name = lower("${var.team}-${var.environment}-loadbalancer-sg")
   description = "Security Group with HTTP open for entire Internet (IPv4 CIDR), egress ports are all world open"
   vpc_id = module.vpc.vpc_id
   # Ingress Rules & CIDR Blocks
