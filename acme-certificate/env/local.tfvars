@@ -58,18 +58,6 @@ domain_alias_records = {
   ],
 }
 
-dns_challenge_staging = {
-    provider = "route53"
-
-    config = { AWS_HOSTED_ZONE_ID = "Z10171071BNDOQUNZTQ84", }
-  }
-
-dns_challenge_main = {
-    provider = "route53"
-
-    config = { AWS_HOSTED_ZONE_ID = "Z10169222Q6V6IPOEWWTI", }
-  }
-
 dns_names_staging     = [
     "staging.lumigame.com",
     "*.staging.lumigame.com",

@@ -27,6 +27,7 @@ output "private_key_pem_staging" {
 output "production_account_registration_url" {
   value = acme_registration.production_account_registration.registration_url
 }
+*/
 output "aws_acm_certificate_main" {
   value = aws_acm_certificate.certificate_production.arn
 }
@@ -34,4 +35,3 @@ output "aws_acm_certificate_main" {
 output "aws_acm_certificate_staging" {
   value = aws_acm_certificate.certificate_staging.arn
 }
-*/

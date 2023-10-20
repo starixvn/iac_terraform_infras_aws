@@ -11,7 +11,7 @@ resource "aws_s3_object" "certificate_artifacts_s3_objects_staging" {
     },
   )
 }
-/*
+
 resource "aws_s3_object" "certificate_artifacts_s3_objects_production" {
   for_each = toset(["certificate_pem", "issuer_pem", "private_key_pem"])
 
@@ -25,4 +25,3 @@ resource "aws_s3_object" "certificate_artifacts_s3_objects_production" {
     },
   )
 }
-*/
