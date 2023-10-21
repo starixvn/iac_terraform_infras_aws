@@ -34,5 +34,12 @@ module "loadbalancer_sg" {
       description = "Allow Whitelist"
       cidr_blocks = var.allow_whitelist
     },
+    {
+      from_port   = 8080
+      to_port     = 8080
+      protocol    = 6
+      description = "Allow Whitelist"
+      cidr_blocks = var.allow_whitelist
+    },
   ]
 }
