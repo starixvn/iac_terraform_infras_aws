@@ -31,6 +31,17 @@ variable "team" {
   type        = string
 }
 
+variable "ingress_cidr_blocks" {
+  description = "allow ingress_cidr_blocks"
+  type        = list(string)
+  default     = []
+}
+
+variable "allow_whitelist" {
+  description = "allow whitelist"
+  type        = string
+}
+
 variable "enable_nat_gateway" {
   type = string
 }
