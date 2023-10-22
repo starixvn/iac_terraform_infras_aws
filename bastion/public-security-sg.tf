@@ -2,7 +2,7 @@
 module "public_bastion_linux_sg" {
   source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version     = "5.0.0"
-  name        = "${var.environment}-${var.project}-public-bastion-sg"
+  name        = lower("${var.team}-${var.environment}-public-bastion-sg")
   description = "Security Group with SSH port open for everybody (IPv4 CIDR), egress ports are all world open"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
   # Ingress Rules & CIDR Blocks
@@ -14,7 +14,7 @@ module "public_bastion_linux_sg" {
 module "public_bastion_windows_sg" {
   source      = "gitlab.nexdev.net/iac-terraform/security-group/aws"
   version     = "5.0.0"
-  name        = "${var.environment}-${var.project}-public-bastion-sg"
+  name        = lower("${var.team}-${var.environment}-public-bastion-sg")
   description = "Security Group with RDP port open for everybody (IPv4 CIDR), egress ports are all world open"
   vpc_id      = data.terraform_remote_state.vpc.outputs.vpc_id
   # Ingress Rules & CIDR Blocks

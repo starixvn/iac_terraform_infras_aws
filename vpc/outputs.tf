@@ -48,3 +48,9 @@ output "nat_public_ips" {
   description = "List of public Elastic IPs created for AWS NAT Gateway"
   value       = module.vpc.nat_public_ips
 }
+
+#  EIP
+output "eip" {
+  description = "List of public Elastic IPs created for AWS NAT Gateway"
+  value       = aws_eip.nat_gw_elastic_ip.public_ip
+}

@@ -49,23 +49,6 @@ variable "domain_ns_records" {
   default     = [{}]
 }
 ######
-variable "dns_challenge_staging" {
-  description = "The [DNS challenge|https://www.terraform.io/docs/providers/acme/r/certificate.html#using-dns-challenges] to use in fulfilling the request."
-
-  type = object({
-    config   = map(string)
-    provider = string
-  })
-}
-
-variable "dns_challenge_main" {
-  description = "The [DNS challenge|https://www.terraform.io/docs/providers/acme/r/certificate.html#using-dns-challenges] to use in fulfilling the request."
-
-  type = object({
-    config   = map(string)
-    provider = string
-  })
-}
 
 variable "dns_names_staging" {
   description = "A list of DNS domain names to register the certificate for. The fist one is the cetificate's common name, the primary domain that the certificate will be recognized for."
@@ -102,15 +85,15 @@ variable "acme_email_staging" {
 
 variable "domain_name" {
   type    = string
-  default = "luminetsoft.com"
+  default = "lumigame.com"
 }
 
 variable "base_domain" {
   type    = string
-  default = "staging.luminetsoft.com"
+  default = "staging.lumigame.com"
 }
 
 variable "base_domain_main" {
   type    = string
-  default = "luminetsoft.com"
+  default = "lumigame.com"
 }

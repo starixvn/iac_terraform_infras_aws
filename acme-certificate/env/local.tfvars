@@ -1,57 +1,71 @@
-project = "clouddemo"
+project = "cloud"
 team = "Lumi"
-aws_region = "ap-northeast-1"
-environment = "prod"
-aws_profile = "test-iac-terraform-ci"
-aws_region_bucket_remote_state = "clouddemo-lumi-starix-tf-terrapin"
-aws_region_key_remote_state    = "env:/prod/vpc-terraform.tfstate"
+aws_region = "ap-east-1"
+environment = "local"
+aws_profile = "local-iac-terraform-ci"
+aws_region_bucket_remote_state = "cloud-lumi-starix-tf-goshawk"
+aws_region_key_remote_state    = "env:/local/vpc-terraform.tfstate"
+aws_region_key_remote_state_zone    = "env:/local/route53-tf.tfstate"
+############### Route53
+domain_ns_records = [
+  {
+    "zone_id" : "lumigame.com",
+    "name_servers" : "staging.lumigame.com",
+    "name" : "staging",
+    "type" : "NS",
+    "ttl" : "86400",
+  },
+]
 
-################EC2
-public_key_location = "key/id_rsa.pub"
-private_key_location = "key/id_rsa"
-###LUMI WEB
-proxy_gw_configuration = [
-  {
-    "application_name" : "proxy_gw-1",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
-  },
-  {
-    "application_name" : "proxy_gw-02",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
-  },
-]
-web_server_configuration = [
-  {
-    "application_name" : "app_server-1",
-    "instance_type" : "t3.micro",
-    "ami" : "windows2022",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "30",
-  },
-  {
-    "application_name" : "app_server-2",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
-  },
-  {
-    "application_name" : "web_server-1",
-    "instance_type" : "t2.micro",
-    "ami" : "ubuntu22",
-    "no_of_instances" : "1",
-    "volume_type" : "gp3",
-    "volume_size" : "20",
-  },
-  
-]
+domain_a_records = {
+  "lumigame.com" = [
+    {
+          "name" : "*",
+          "type" : "A",
+          "ttl" : "3600",
+          "record" : "10.10.50.69",
+    },
+    {
+          "name" : "nexops",
+          "type" : "A",
+          "ttl" : "3600",
+          "record" : "202.78.231.55",
+    },
+  ],  
+}
+
+
+domain_alias_records = {
+  "lumigame.com" = [
+    {
+        "name" : "w1",
+        "type" : "A",
+    },
+    {
+        "name" : "w2",
+        "type" : "A",
+    },
+  ],
+  "staging.lumigame.com" = [
+    {
+        "name" : "w1",
+        "type" : "A",
+    },
+    {
+        "name" : "w2",
+        "type" : "A",
+    },
+  ],
+}
+
+dns_names_staging     = [
+    "staging.lumigame.com",
+    "*.staging.lumigame.com",
+  ]
+
+dns_names_main     = [
+    "lumigame.com",
+    "*.lumigame.com",
+  ]
+acme_email = "troy.vo@starixsoft.com"
+acme_email_staging = "troy.vo@nexcel.vn"

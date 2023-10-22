@@ -1,14 +1,13 @@
 project = "cloud"
+team = "Lumi"
 aws_region = "ap-east-1"
 environment = "local"
 aws_profile = "local-iac-terraform-ci"
-###VPC1
-vpc_cidr         = "10.0.0.0/16"
-private_subnets  = ["10.0.1.0/24", "10.0.2.0/24"]
-public_subnets   = ["10.0.101.0/24", "10.0.102.0/24"]
+##############VPC
+vpc_cidr_block         = "10.6.0.0/16"
 enable_nat_gateway = true
 single_nat_gateway = true
-
-###VPC2
-
-vpc_availability_zones = ["ap-east-1a","ap-east-1b"]
+ingress_cidr_blocks = ["202.78.231.32/27","120.72.109.32/29","120.72.83.128/29"] #["0.0.0.0/0"]
+allow_whitelist = "202.78.231.32/27,120.72.109.32/29,120.72.83.128/29"
+##############
+rudder_num_availability_zones = 2

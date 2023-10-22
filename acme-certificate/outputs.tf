@@ -2,9 +2,6 @@ output "staging_account_registration_url" {
   value = acme_registration.staging_account_registration.registration_url
 }
 
-output "production_account_registration_url" {
-  value = acme_registration.production_account_registration.registration_url
-}
 
 output "certificate_pem_staging" {
   description = "The certificate in PEM format."
@@ -26,7 +23,11 @@ output "private_key_pem_staging" {
   value       = module.acme_certificate_staging.private_key_pem
   sensitive = true
 }
-
+/*
+output "production_account_registration_url" {
+  value = acme_registration.production_account_registration.registration_url
+}
+*/
 output "aws_acm_certificate_main" {
   value = aws_acm_certificate.certificate_production.arn
 }
