@@ -18,7 +18,12 @@ module "public_bastion_linux" {
     http_put_response_hop_limit = 8
   }
   user_data = file("${path.module}/linux_prepare.sh")
-  tags      = local.common_tags
+  tags = merge(
+    local.common_tags,
+    {
+      Resource = "stopoutofworking"
+    },
+  )
 }
 /*
 module "public_bastion_windows" {
