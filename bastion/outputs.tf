@@ -8,3 +8,7 @@ output "public_bastion_sg" {
 output "public_bastion_testing" {
   value = module.public_bastion_linux
 }
+
+output "public_aws_eip" {
+  value = aws_eip.public_bastion_linux_eip.id
+}
