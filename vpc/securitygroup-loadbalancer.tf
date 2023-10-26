@@ -25,21 +25,21 @@ module "loadbalancer_sg" {
       to_port     = 22222
       protocol    = 6
       description = "Allow Whitelist"
-      cidr_blocks = var.allow_whitelist
+      cidr_blocks = "0.0.0.0/0"
     },
     {
       from_port   = 9000
       to_port     = 9001
       protocol    = 6
       description = "Allow Whitelist"
-      cidr_blocks = var.allow_whitelist
+      cidr_blocks = "0.0.0.0/0"
     },
     {
       from_port   = 8080
       to_port     = 8080
       protocol    = 6
       description = "Allow Whitelist"
-      cidr_blocks = var.allow_whitelist
+      cidr_blocks = "0.0.0.0/0"
     },
   ]
 }
