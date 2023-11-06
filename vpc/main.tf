@@ -4,6 +4,7 @@ module "vpc" {
   version = "5.1.0"
   name    = lower("${var.team}-${var.environment}-vpc")
   cidr    = var.vpc_cidr_block
+  #secondary_cidr_blocks = ["100.64.0.0/16"]
   azs     = local.azs_sliced
 
   private_subnets = [

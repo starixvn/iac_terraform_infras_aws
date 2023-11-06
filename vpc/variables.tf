@@ -14,6 +14,12 @@ variable "vpc_cidr_block" {
   type        = string
 }
 
+variable "secondary_cidr_blocks" {
+  description = "List of secondary CIDR blocks to associate with the VPC to extend the IP Address pool"
+  type        = list(string)
+  default     = []
+}
+
 variable "vpc_cidr_subnetwork_width_delta" {
   description = "The difference between your network and subnetwork netmask; an /16 network and a /20 subnetwork would be 4."
   type        = number
