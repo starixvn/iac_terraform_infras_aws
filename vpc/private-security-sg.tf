@@ -47,8 +47,9 @@ module "db_mongo_sg" {
   name        = "${var.environment}-${var.project}-sb-mongo-sg"
   description = "Security Group for Mongo DB"
   vpc_id      = module.vpc.vpc_id
+  ingress_rules       = ["ssh-tcp","all-icmp"]
   # Ingress Rules & CIDR Blocks
-  ingress_cidr_blocks = ["0.0.0.0/0"] # Required for NLB
+  ingress_cidr_blocks = [module.vpc.vpc_cidr_block]
   ingress_with_cidr_blocks = [
     {
       from_port   = 27106
