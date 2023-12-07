@@ -2,7 +2,7 @@
 # output "vpc" {
 #   value = module.vpc
 # }
-
+/*
 output "private_web_sg" {
   value = module.web_sg.security_group_id
 }
@@ -11,10 +11,10 @@ output "private_db_mongo_sg" {
   value = module.db_mongo_sg.security_group_id
 }
 
-output "proxy_gw_sg" {
-  value = module.proxy_gw_sg.security_group_id
-}
-
+# output "proxy_gw_sg" {
+#   value = module.proxy_gw_sg.security_group_id
+# }
+*/
 output "loadbalancer_sg" {
   value = module.loadbalancer_sg.security_group_id
 }
